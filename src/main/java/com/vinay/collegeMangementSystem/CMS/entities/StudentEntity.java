@@ -1,5 +1,7 @@
 package com.vinay.collegeMangementSystem.CMS.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +16,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "Student")
 public class StudentEntity {
 
     @Id
@@ -29,6 +31,7 @@ public class StudentEntity {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id")
     )
+    @JsonManagedReference
     private List<ProfessorEntity> professors;
 
     @ManyToMany
@@ -37,6 +40,7 @@ public class StudentEntity {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
+    @JsonManagedReference
     private List<SubjectEntity> subjects;
 
     @Override
