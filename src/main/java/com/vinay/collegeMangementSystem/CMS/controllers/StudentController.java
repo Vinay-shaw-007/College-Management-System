@@ -43,4 +43,12 @@ public class StudentController {
 
         return ResponseEntity.ok(student);
     }
+
+    @PutMapping(path = "/{studentId}/subject/{subjectId}")
+    public ResponseEntity<StudentDto> assignSubjectToStudent(@PathVariable Long studentId,
+                                                             @PathVariable Long subjectId) {
+        StudentDto student = studentService.assignSubjectToStudent(studentId, subjectId);
+        if (student == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(student);
+    }
 }

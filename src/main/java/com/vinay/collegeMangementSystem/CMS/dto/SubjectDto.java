@@ -1,5 +1,6 @@
 package com.vinay.collegeMangementSystem.CMS.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class SubjectDto {
 
     private ProfessorDto professor;
 
+    @JsonIgnore
     private List<StudentDto> students;
 
     @Override

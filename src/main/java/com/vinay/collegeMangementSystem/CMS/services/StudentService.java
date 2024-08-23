@@ -11,4 +11,6 @@ public interface StudentService {
     StudentDto assignProfessorToStudent(Long studentId, Long professorId);
 
     List<StudentDto> getAllStudents();
+
+    StudentDto assignSubjectToStudent(Long studentId, Long subjectId);
 }
