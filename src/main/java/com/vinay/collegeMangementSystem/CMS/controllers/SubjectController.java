@@ -28,4 +28,24 @@ public class SubjectController {
 
         return new ResponseEntity<>(savedSubject, HttpStatus.CREATED);
     }
+
+    @PutMapping("/{subjectId}/professor/{professorId}")
+    public ResponseEntity<SubjectDto> assignProfessorToSubject(@PathVariable Long subjectId,
+                                                               @PathVariable Long professorId) {
+        SubjectDto subjectDto = subjectService.assignProfessorToSubject(subjectId, professorId);
+
+        if (subjectDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(subjectDto);
+    }
+
+    @PutMapping("/{subjectId}/student/{studentId}")
+    public ResponseEntity<SubjectDto> assignStudentToSubject(@PathVariable Long subjectId,
+                                                             @PathVariable Long studentId) {
+        SubjectDto subjectDto = subjectService.assignStudentToSubject(subjectId, studentId);
+
+        if (subjectDto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(subjectDto);
+    }
+
 }
