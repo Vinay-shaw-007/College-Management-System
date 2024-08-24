@@ -1,5 +1,6 @@
 package com.vinay.collegeMangementSystem.CMS.services.impl;
 
+import com.vinay.collegeMangementSystem.CMS.dto.StudentDto;
 import com.vinay.collegeMangementSystem.CMS.dto.SubjectDto;
 import com.vinay.collegeMangementSystem.CMS.entities.ProfessorEntity;
 import com.vinay.collegeMangementSystem.CMS.entities.StudentEntity;
@@ -41,13 +42,14 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public SubjectDto assignStudentToSubject(Long subjectId, Long studentId) {
+    public StudentDto assignStudentToSubject(Long subjectId, Long studentId) {
         Optional<SubjectEntity> subjectEntity = subjectRepo.findById(subjectId);
         Optional<StudentEntity> studentEntity = studentRepo.findById(studentId);
 
         if (subjectEntity.isEmpty() || studentEntity.isEmpty()) return null;
-        subjectEntity.get().getStudents().add(studentEntity.get());
-        return modelMapper.map(subjectRepo.save(subjectEntity.get()), SubjectDto.class);
+
+        studentEntity.get().getSubjects().add(subjectEntity.get());
+        return modelMapper.map(studentRepo.save(studentEntity.get()), StudentDto.class);
     }
 
     @Override
@@ -56,6 +58,7 @@ public class SubjectServiceImpl implements SubjectService {
         Optional<ProfessorEntity> professorEntity = professorRepo.findById(professorId);
 
         if (subjectEntity.isEmpty() || professorEntity.isEmpty()) return null;
+
         subjectEntity.get().setProfessor(professorEntity.get());
         return modelMapper.map(subjectRepo.save(subjectEntity.get()), SubjectDto.class);
     }

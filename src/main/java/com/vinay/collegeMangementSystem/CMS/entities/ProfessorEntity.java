@@ -27,11 +27,11 @@ public class ProfessorEntity {
     private String name;
 
     @OneToMany(mappedBy = "professor")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<SubjectEntity> subjects;
 
     @ManyToMany(mappedBy = "professors")
-    @JsonBackReference
+//    @JsonBackReference
     private List<StudentEntity> students;
 
     @Override

@@ -31,7 +31,7 @@ public class StudentEntity {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id")
     )
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<ProfessorEntity> professors;
 
     @ManyToMany
@@ -40,7 +40,7 @@ public class StudentEntity {
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<SubjectEntity> subjects;
 
     @Override

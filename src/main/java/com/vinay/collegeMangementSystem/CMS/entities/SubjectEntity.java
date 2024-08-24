@@ -26,11 +26,11 @@ public class SubjectEntity {
 
     @ManyToOne
     @JoinColumn(name = "professor_id")
-    @JsonBackReference
+//    @JsonBackReference
     private ProfessorEntity professor;
 
     @ManyToMany(mappedBy = "subjects")
-    @JsonBackReference
+//    @JsonBackReference
     private List<StudentEntity> students;
 
     @Override

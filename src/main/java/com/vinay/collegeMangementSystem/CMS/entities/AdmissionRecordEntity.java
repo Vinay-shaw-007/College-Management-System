@@ -25,7 +25,7 @@ public class AdmissionRecordEntity {
 
     @OneToOne
     @JoinColumn(name = "student_id")
-    @JsonManagedReference
+//    @JsonManagedReference
     private StudentEntity student;
 
     @Override

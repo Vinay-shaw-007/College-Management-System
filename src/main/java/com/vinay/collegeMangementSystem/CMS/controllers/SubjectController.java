@@ -1,6 +1,8 @@
 package com.vinay.collegeMangementSystem.CMS.controllers;
 
+import com.vinay.collegeMangementSystem.CMS.dto.StudentDto;
 import com.vinay.collegeMangementSystem.CMS.dto.SubjectDto;
+import com.vinay.collegeMangementSystem.CMS.entities.SubjectEntity;
 import com.vinay.collegeMangementSystem.CMS.services.SubjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -39,13 +41,13 @@ public class SubjectController {
     }
 
     @PutMapping("/{subjectId}/student/{studentId}")
-    public ResponseEntity<SubjectDto> assignStudentToSubject(@PathVariable Long subjectId,
+    public ResponseEntity<StudentDto> assignStudentToSubject(@PathVariable Long subjectId,
                                                              @PathVariable Long studentId) {
-        SubjectDto subjectDto = subjectService.assignStudentToSubject(subjectId, studentId);
+        StudentDto studentDto = subjectService.assignStudentToSubject(subjectId, studentId);
 
-        if (subjectDto == null) return ResponseEntity.notFound().build();
+        if (studentDto == null) return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(subjectDto);
+        return ResponseEntity.ok(studentDto);
     }
 
 }

@@ -20,6 +20,7 @@ public class ProfessorDto {
 
     private String name;
 
+    @JsonIgnore
     private List<SubjectDto> subjects;
 
     @JsonIgnore
